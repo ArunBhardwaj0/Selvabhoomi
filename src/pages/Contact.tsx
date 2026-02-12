@@ -104,8 +104,20 @@ export default function Contact() {
                                                 <span className="text-[10px] font-black text-emerald-500/60 uppercase tracking-[0.4em] italic">{item.title}</span>
                                             </div>
                                             <div className="pl-2">
-                                                <p className="text-white text-2xl font-black tracking-tighter italic uppercase group-hover:text-emerald-400 transition-colors">{item.value}</p>
-                                                {item.sub && <p className="text-[10px] text-gray-600 font-black mt-4 tracking-[0.3em] uppercase group-hover:text-gray-400 transition-colors">{item.sub}</p>}
+                                                <EditableText
+                                                    id={`contact_info_val_${i}`}
+                                                    content={item.value}
+                                                    as="p"
+                                                    className="text-white text-2xl font-black tracking-tighter italic uppercase group-hover:text-emerald-400 transition-colors"
+                                                />
+                                                {item.sub && (
+                                                    <EditableText
+                                                        id={`contact_info_sub_${i}`}
+                                                        content={item.sub}
+                                                        as="p"
+                                                        className="text-[10px] text-gray-600 font-black mt-4 tracking-[0.3em] uppercase group-hover:text-gray-400 transition-colors"
+                                                    />
+                                                )}
                                             </div>
                                         </div>
                                     ))}
@@ -119,8 +131,13 @@ export default function Contact() {
                                 <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,_#10b98110_0%,_transparent_50%)]"></div>
 
                                 <div className="relative z-10 mb-16">
-                                    <h2 className="text-5xl md:text-6xl font-black text-white mb-6 italic uppercase tracking-tighter leading-none">Send <br /><span className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">Message</span></h2>
-                                    <p className="text-gray-500 italic font-light text-lg">"Tell us about your requirements, and our team will get back to you shortly."</p>
+                                    <h2 className="text-5xl md:text-6xl font-black text-white mb-6 italic uppercase tracking-tighter leading-none">Send <br /><EditableText id="contact_form_title_accent" content="Message" as="span" className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]" /></h2>
+                                    <EditableText
+                                        id="contact_form_desc"
+                                        content='"Tell us about your requirements, and our team will get back to you shortly."'
+                                        as="p"
+                                        className="text-gray-500 italic font-light text-lg"
+                                    />
                                 </div>
 
                                 <AnimatePresence mode="wait">
@@ -242,11 +259,14 @@ export default function Contact() {
                                 <Server className="w-4 h-4" /> Physical Infrastructure
                             </h2>
                             <h3 className="text-4xl md:text-6xl font-black text-white mb-10 uppercase italic leading-[1] tracking-tighter">
-                                Our <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic">Office</span>
+                                Our <EditableText id="contact_office_title_accent" content="Office" as="span" className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic" />
                             </h3>
-                            <p className="text-lg lg:text-xl text-gray-500 font-light italic leading-relaxed mb-12">
-                                "Our office is a space for personalized advisory. Visit us in Chennai for a detailed tour and discussion about our available land assets and managed farm communities."
-                            </p>
+                            <EditableText
+                                id="contact_office_desc"
+                                content='"Our office is a space for personalized advisory. Visit us in Chennai for a detailed tour and discussion about our available land assets and managed farm communities."'
+                                as="p"
+                                className="text-lg lg:text-xl text-gray-500 font-light italic leading-relaxed mb-12"
+                            />
 
                             <div className="space-y-10">
                                 {[
@@ -255,8 +275,18 @@ export default function Contact() {
                                 ].map((hub, i) => (
                                     <div key={i} className="flex items-center justify-between p-8 bg-white/5 rounded-3xl border border-white/5 group hover:border-emerald-500/30 transition-all duration-700">
                                         <div>
-                                            <div className="text-xl font-black text-white italic tracking-widest uppercase mb-1">{hub.city}</div>
-                                            <div className="text-[9px] font-black text-emerald-500/60 uppercase tracking-[0.4em]">{hub.type}</div>
+                                            <EditableText
+                                                id={`contact_hub_${i}_city`}
+                                                content={hub.city}
+                                                as="div"
+                                                className="text-xl font-black text-white italic tracking-widest uppercase mb-1"
+                                            />
+                                            <EditableText
+                                                id={`contact_hub_${i}_type`}
+                                                content={hub.type}
+                                                as="div"
+                                                className="text-[9px] font-black text-emerald-500/60 uppercase tracking-[0.4em]"
+                                            />
                                         </div>
                                         <div className="text-right">
                                             <div className="text-[8px] font-black text-gray-700 tracking-[0.4em] uppercase mb-1">Status</div>
@@ -292,7 +322,7 @@ export default function Contact() {
                             <HelpCircle className="w-4 h-4" /> Your Guide
                         </h2>
                         <h3 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase italic leading-none tracking-tighter">
-                            Common <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic">Questions</span>
+                            Common <EditableText id="contact_faq_title_accent" content="Questions" as="span" className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic" />
                         </h3>
                     </RevealOnScroll>
 
@@ -309,8 +339,18 @@ export default function Contact() {
                                             <Settings className="w-6 h-6 text-emerald-400" />
                                         </div>
                                         <div>
-                                            <div className="text-xl font-black text-white italic tracking-tighter uppercase mb-6 group-hover:text-emerald-400 transition-colors">{faq.q}</div>
-                                            <p className="text-gray-500 text-lg font-light italic leading-relaxed">"{faq.a}"</p>
+                                            <EditableText
+                                                id={`contact_faq_${i}_q`}
+                                                content={faq.q}
+                                                as="div"
+                                                className="text-xl font-black text-white italic tracking-tighter uppercase mb-6 group-hover:text-emerald-400 transition-colors"
+                                            />
+                                            <EditableText
+                                                id={`contact_faq_${i}_a`}
+                                                content={`"${faq.a}"`}
+                                                as="p"
+                                                className="text-gray-500 text-lg font-light italic leading-relaxed"
+                                            />
                                         </div>
                                     </div>
                                 </div>

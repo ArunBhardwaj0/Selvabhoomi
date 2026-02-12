@@ -164,13 +164,31 @@ export default function Home() {
             <section id="offerings" className="py-40 px-6 md:px-8 lg:px-10 relative bg-black/20">
                 <div className="max-w-7xl mx-auto">
                     <RevealOnScroll className="text-center mb-32">
-                        <div className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.5em] mb-6">Handpicked Assets</div>
+                        <EditableText
+                            id="home_offerings_tag"
+                            content="Handpicked Assets"
+                            as="div"
+                            className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.5em] mb-6"
+                        />
                         <h2 className="text-4xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter italic">
-                            Prime <span className="text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]">Land Selection</span>
+                            <EditableText
+                                id="home_offerings_title_prime"
+                                content="Prime"
+                                as="span"
+                            />{' '}
+                            <EditableText
+                                id="home_offerings_title_accent"
+                                content="Land Selection"
+                                as="span"
+                                className="text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+                            />
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto font-light text-xl italic leading-relaxed">
-                            "Handpicked land assets for every lifestyle. High-growth residential plots and lush managed farmlands designed for your future."
-                        </p>
+                        <EditableText
+                            id="home_offerings_desc"
+                            content='"Handpicked land assets for every lifestyle. High-growth residential plots and lush managed farmlands designed for your future."'
+                            as="p"
+                            className="text-gray-400 max-w-2xl mx-auto font-light text-xl italic leading-relaxed"
+                        />
                     </RevealOnScroll>
 
                     <div className="grid lg:grid-cols-2 gap-12">
@@ -208,10 +226,18 @@ export default function Home() {
                                             </div>
                                         )}
 
-                                        <h3 className="text-4xl font-black text-white mb-8 uppercase italic tracking-tighter group-hover:translate-x-3 transition-transform duration-500">{card.title}</h3>
-                                        <p className="text-gray-400 mb-12 leading-relaxed font-light text-xl italic opacity-80 group-hover:opacity-100 transition-opacity">
-                                            "{card.desc}"
-                                        </p>
+                                        <EditableText
+                                            id={`home_offer_${i}_title`}
+                                            content={card.title}
+                                            as="h3"
+                                            className="text-4xl font-black text-white mb-8 uppercase italic tracking-tighter group-hover:translate-x-3 transition-transform duration-500"
+                                        />
+                                        <EditableText
+                                            id={`home_offer_${i}_desc`}
+                                            content={`"${card.desc}"`}
+                                            as="p"
+                                            className="text-gray-400 mb-12 leading-relaxed font-light text-xl italic opacity-80 group-hover:opacity-100 transition-opacity"
+                                        />
 
                                         <div className="grid grid-cols-2 gap-6 mb-16">
                                             {card.points.map((pt, j) => (
@@ -243,8 +269,9 @@ export default function Home() {
                             <div className="relative group">
                                 <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-[4rem] group-hover:bg-emerald-500/20 transition-all duration-1000"></div>
                                 <div className="relative rounded-[3.5rem] overflow-hidden border border-white/10 shadow-2xl">
-                                    <img
-                                        src="file:///Users/ashiq/.gemini/antigravity/brain/9a4b7b56-95e9-4998-9e99-98854a31cadd/infrastructure_matrix_visual_1770913790026.png"
+                                    <EditableImage
+                                        id="home_infra_image"
+                                        src={settings.home_infra_image || "file:///Users/ashiq/.gemini/antigravity/brain/9a4b7b56-95e9-4998-9e99-98854a31cadd/infrastructure_matrix_visual_1770913790026.png"}
                                         alt="Infrastructure Matrix"
                                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                                     />
@@ -266,11 +293,14 @@ export default function Home() {
                                 <Activity className="w-4 h-4" /> Market Insights
                             </h2>
                             <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-10 uppercase italic leading-[1] tracking-tighter">
-                                The <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">Growth</span> Corridor
+                                The <EditableText id="home_infra_title_accent" content="Growth" as="span" className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent" /> Corridor
                             </h3>
-                            <p className="text-base lg:text-lg text-gray-500 font-light italic leading-relaxed mb-12">
-                                "Secure your future in the heart of the developing Parandur Airport ecosystem. We don't just sell land; we identify the most profitable assets for your long-term wealth."
-                            </p>
+                            <EditableText
+                                id="home_infra_desc"
+                                content='"Secure your future in the heart of the developing Parandur Airport ecosystem. We don’t just sell land; we identify the most profitable assets for your long-term wealth."'
+                                as="p"
+                                className="text-base lg:text-lg text-gray-500 font-light italic leading-relaxed mb-12"
+                            />
 
                             <div className="space-y-6 lg:space-y-8">
                                 {[
@@ -309,10 +339,18 @@ export default function Home() {
                                     <div className="w-24 h-24 bg-emerald-500/5 rounded-[2rem] flex items-center justify-center mb-12 border border-emerald-500/10 group-hover:border-emerald-500 group-hover:bg-emerald-500/20 transition-all duration-700 shadow-2xl">
                                         <item.icon className="w-12 h-12 text-emerald-400" />
                                     </div>
-                                    <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-[0.2em] italic">{item.title}</h3>
-                                    <p className="text-gray-500 text-lg leading-relaxed font-light italic">
-                                        "{item.desc}"
-                                    </p>
+                                    <EditableText
+                                        id={`home_why_${i}_title`}
+                                        content={item.title}
+                                        as="h3"
+                                        className="text-2xl font-black text-white mb-6 uppercase tracking-[0.2em] italic"
+                                    />
+                                    <EditableText
+                                        id={`home_why_${i}_desc`}
+                                        content={`"${item.desc}"`}
+                                        as="p"
+                                        className="text-gray-500 text-lg leading-relaxed font-light italic"
+                                    />
                                 </div>
                             </RevealOnScroll>
                         ))}
@@ -326,7 +364,8 @@ export default function Home() {
                                 <div className="grid lg:grid-cols-2 gap-32 items-center relative z-10">
                                     <div className="text-left">
                                         <h3 className="text-5xl md:text-6xl font-black text-white mb-12 uppercase italic leading-[0.8] tracking-widest">
-                                            Secure <br /><span className="text-emerald-500 bg-emerald-500/10 px-4 py-2 rounded-2xl border border-emerald-500/20">Ownership</span>
+                                            <EditableText id="home_secure_title_top" content="Secure" as="span" /> <br />
+                                            <EditableText id="home_secure_title_bottom" content="Ownership" as="span" className="text-emerald-500 bg-emerald-500/10 px-4 py-2 rounded-2xl border border-emerald-500/20" />
                                         </h3>
                                         <div className="space-y-10">
                                             {[
@@ -404,12 +443,25 @@ export default function Home() {
                                                 <div key={j} className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
                                             ))}
                                         </div>
-                                        <p className="text-sm lg:text-lg text-gray-400 leading-relaxed font-light italic mb-10 group-hover:text-white transition-colors">
-                                            "{log.log}"
-                                        </p>
+                                        <EditableText
+                                            id={`testimonial_${i}_log`}
+                                            content={`"${log.log}"`}
+                                            as="p"
+                                            className="text-sm lg:text-lg text-gray-400 leading-relaxed font-light italic mb-10 group-hover:text-white transition-colors"
+                                        />
                                         <div className="pt-8 border-t border-white/5">
-                                            <div className="font-black text-white tracking-widest uppercase">{log.name}</div>
-                                            <div className="text-[9px] font-black text-emerald-500/60 uppercase tracking-[0.4em] mt-1">{log.role}</div>
+                                            <EditableText
+                                                id={`testimonial_${i}_name`}
+                                                content={log.name}
+                                                as="div"
+                                                className="font-black text-white tracking-widest uppercase"
+                                            />
+                                            <EditableText
+                                                id={`testimonial_${i}_role`}
+                                                content={log.role}
+                                                as="div"
+                                                className="text-[9px] font-black text-emerald-500/60 uppercase tracking-[0.4em] mt-1"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -426,11 +478,15 @@ export default function Home() {
                 <div className="max-w-5xl mx-auto text-center relative z-10 w-full">
                     <RevealOnScroll>
                         <h2 className="text-6xl md:text-9xl font-black mb-16 text-white uppercase italic tracking-[0.1em] leading-none">
-                            Secure <br /><span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-500 bg-clip-text text-transparent italic drop-shadow-[0_0_50px_rgba(16,185,129,0.5)]">Your Future</span>
+                            <EditableText id="home_cta_title_top" content="Secure" as="span" /> <br />
+                            <EditableText id="home_cta_title_bottom" content="Your Future" as="span" className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-500 bg-clip-text text-transparent italic drop-shadow-[0_0_50px_rgba(16,185,129,0.5)]" />
                         </h2>
-                        <p className="text-xl md:text-2xl text-gray-500 mb-24 leading-relaxed max-w-3xl mx-auto font-light italic opacity-80">
-                            "The growth corridor is accelerating. Secure your dream plot or managed farmland before the Parandur Airport phase completes."
-                        </p>
+                        <EditableText
+                            id="home_cta_desc"
+                            content='"The growth corridor is accelerating. Secure your dream plot or managed farmland before the Parandur Airport phase completes."'
+                            as="p"
+                            className="text-xl md:text-2xl text-gray-500 mb-24 leading-relaxed max-w-3xl mx-auto font-light italic opacity-80"
+                        />
 
                         <div className="flex flex-wrap gap-10 justify-center mb-32">
                             <Link to="/contact">

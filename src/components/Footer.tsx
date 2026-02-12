@@ -2,6 +2,7 @@ import { MapPin, Mail, Phone, Facebook, Instagram, Twitter, Linkedin, Shield, Gl
 import { Link } from 'react-router-dom';
 import { useSiteSettings } from '../hooks/useSiteSettings';
 import RevealOnScroll from './ui/reveal-on-scroll';
+import { EditableText } from './ui/EditableContent';
 
 export default function Footer() {
     const { settings } = useSiteSettings();
@@ -20,9 +21,12 @@ export default function Footer() {
                             </div>
                             <span className="text-2xl font-black tracking-tighter text-white uppercase italic px-1">SELVABHOOMI</span>
                         </Link>
-                        <p className="text-gray-500 leading-relaxed mb-10 max-w-sm italic font-light text-lg">
-                            "Building a new dimension of land investment. Secure, transparent, and future-forward architecture for your legacy."
-                        </p>
+                        <EditableText
+                            id="footer_brand_desc"
+                            content='"Building a new dimension of land investment. Secure, transparent, and future-forward architecture for your legacy."'
+                            as="p"
+                            className="text-gray-500 leading-relaxed mb-10 max-w-sm italic font-light text-lg"
+                        />
                         <div className="flex gap-5">
                             {[Facebook, Instagram, Twitter, Linkedin].map((Icon, i) => (
                                 <a
@@ -86,13 +90,23 @@ export default function Footer() {
                                 <div className="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-all">
                                     <Phone className="w-5 h-5 text-emerald-400" />
                                 </div>
-                                <span className="text-white font-black text-sm tracking-widest">{settings.contact_phone || '+91 91 76002 530'}</span>
+                                <EditableText
+                                    id="contact_phone"
+                                    content={settings.contact_phone || '+91 91 76002 530'}
+                                    as="span"
+                                    className="text-white font-black text-sm tracking-widest"
+                                />
                             </li>
                             <li className="flex items-center gap-5 group">
                                 <div className="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-all">
                                     <Mail className="w-5 h-5 text-emerald-400" />
                                 </div>
-                                <span className="text-white font-black text-sm tracking-wider underline underline-offset-8 truncate">{settings.contact_email || 'admin@selvabhoomiproperties.in'}</span>
+                                <EditableText
+                                    id="contact_email"
+                                    content={settings.contact_email || 'admin@selvabhoomiproperties.in'}
+                                    as="span"
+                                    className="text-white font-black text-sm tracking-wider underline underline-offset-8 truncate"
+                                />
                             </li>
                         </ul>
                     </RevealOnScroll>

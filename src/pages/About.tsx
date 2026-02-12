@@ -88,11 +88,14 @@ export default function About() {
                                 <Cpu className="w-4 h-4" /> Technical Protocol
                             </h2>
                             <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-10 uppercase italic leading-[1] tracking-tighter">
-                                Our <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic">Framework</span>
+                                Our <EditableText id="about_infra_title_accent" content="Framework" as="span" className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic" />
                             </h3>
-                            <p className="text-lg lg:text-xl text-gray-500 font-light italic leading-relaxed mb-12">
-                                "Our process is built on absolute precision. Every land acquisition undergoes a 12-stage legal verification before it reaches our community of investors."
-                            </p>
+                            <EditableText
+                                id="about_infra_desc"
+                                content='"Our process is built on absolute precision. Every land acquisition undergoes a 12-stage legal verification before it reaches our community of investors."'
+                                as="p"
+                                className="text-lg lg:text-xl text-gray-500 font-light italic leading-relaxed mb-12"
+                            />
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                 {[
@@ -112,7 +115,8 @@ export default function About() {
                             <div className="relative group">
                                 <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-[4rem] group-hover:bg-emerald-500/20 transition-all duration-1000"></div>
                                 <div className="relative rounded-[3.5rem] overflow-hidden border border-white/10 shadow-2xl">
-                                    <img
+                                    <EditableImage
+                                        id="about_infra_blueprint"
                                         src="file:///Users/ashiq/.gemini/antigravity/brain/9a4b7b56-95e9-4998-9e99-98854a31cadd/architectural_legacy_blueprint_1770913810522.png"
                                         alt="Architecture Blueprint"
                                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000"
@@ -130,28 +134,49 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Journey - Cinematic Padding */}
-            <section className="py-40 px-6 md:px-12 bg-black/40 rounded-[6rem] mb-40 border border-white/5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
+            {/* Timeline Section */}
+            <section className="py-32 lg:py-40 px-6 md:px-8 lg:px-10 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-32 items-center">
                         <RevealOnScroll>
-                            <h2 className="text-5xl md:text-7xl font-black text-white mb-16 tracking-tighter uppercase italic leading-none">
-                                The <span className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">Timeline</span>
+                            <h2 className="text-[10px] font-black text-emerald-500 mb-8 uppercase tracking-[0.6em] flex items-center gap-4 italic px-4 py-2 border border-emerald-500/20 rounded-xl w-fit">
+                                <History className="w-4 h-4" /> Chronology
                             </h2>
-                            <div className="space-y-16">
+                            <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-10 uppercase italic leading-[1] tracking-tighter">
+                                Our <EditableText id="about_timeline_title_accent" content="Legacy" as="span" className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic" />
+                            </h3>
+                            <EditableText
+                                id="about_timeline_desc"
+                                content='"A decade of unwavering commitment to land investment excellence, building trust and prosperity for our community."'
+                                as="p"
+                                className="text-lg lg:text-xl text-gray-500 font-light italic leading-relaxed mb-12"
+                            />
+
+                            <div className="space-y-12">
                                 {[
-                                    { title: 'ORIGIN // 2014', text: 'Founded with a mission to bring security to the real estate sector. Our first project was successfully delivered.' },
-                                    { title: 'GROWTH // 2018', text: 'Evolved into a premier land management firm, focusing on high-growth corridors like Parandur.' },
-                                    { title: 'TRUSTED // CURRENT', text: 'Delivered 500+ acres of prime land to 1000+ happy families. Expanding into the future.' }
+                                    { title: '2014 // FOUNDATION', text: 'Established with a vision to revolutionize land investment with transparency.' },
+                                    { title: '2017 // EXPANSION', text: 'Expanded operations, acquiring prime agricultural lands across key regions.' },
+                                    { title: '2020 // DIGITALIZATION', text: 'Launched digital platform for seamless property management and investor access.' },
+                                    { title: '2023 // INNOVATION', text: 'Introduced advanced legal verification protocols and sustainable farming initiatives.' }
                                 ].map((step, i) => (
                                     <div key={i} className="relative pl-16 border-l-2 border-emerald-500/10 group hover:border-emerald-500 transition-all duration-1000 py-4">
                                         <div className="absolute left-[-6px] top-6 w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_20px_#10b981] scale-0 group-hover:scale-125 transition-all duration-700"></div>
-                                        <h3 className="text-[10px] font-black text-emerald-500/50 mb-4 uppercase tracking-[0.5em] group-hover:text-emerald-400 transition-colors">{step.title}</h3>
-                                        <p className="text-gray-400 text-xl font-light italic leading-relaxed group-hover:text-gray-200 transition-colors">{step.text}</p>
+                                        <EditableText
+                                            id={`about_timeline_${i}_title`}
+                                            content={step.title}
+                                            as="h3"
+                                            className="text-[10px] font-black text-emerald-500/50 mb-4 uppercase tracking-[0.5em] group-hover:text-emerald-400 transition-colors"
+                                        />
+                                        <EditableText
+                                            id={`about_timeline_${i}_desc`}
+                                            content={step.text}
+                                            as="p"
+                                            className="text-gray-400 text-xl font-light italic leading-relaxed group-hover:text-gray-200 transition-colors"
+                                        />
                                     </div>
                                 ))}
                             </div>
-                        </RevealOnScroll>
+                        </RevealOnScroll >
 
                         <RevealOnScroll delay={0.3}>
                             <div className="relative group">
@@ -176,19 +201,19 @@ export default function About() {
                                 </div>
                             </div>
                         </RevealOnScroll>
-                    </div>
-                </div>
-            </section>
+                    </div >
+                </div >
+            </section >
 
             {/* Regional Network Section */}
-            <section className="py-40 px-6 md:px-8 lg:px-10 relative overflow-hidden">
+            <section className="py-40 px-6 md:px-8 lg:px-10 relative overflow-hidden" >
                 <div className="max-w-7xl mx-auto text-center mb-24">
                     <RevealOnScroll>
                         <h2 className="text-[10px] font-black text-emerald-500 mb-8 uppercase tracking-[0.6em] justify-center flex items-center gap-4 italic">
                             <Globe className="w-4 h-4" /> Global Grid
                         </h2>
                         <h3 className="text-5xl md:text-7xl font-black text-white mb-8 uppercase italic leading-none tracking-tighter">
-                            Regional <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic">Network</span>
+                            Regional <EditableText id="about_network_title_accent" content="Network" as="span" className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent italic" />
                         </h3>
                     </RevealOnScroll>
 
@@ -217,12 +242,12 @@ export default function About() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Final Values Grid */}
-            <section className="py-20 mb-32 max-w-7xl mx-auto text-center">
+            <section className="py-20 mb-32 max-w-7xl mx-auto text-center" >
                 <RevealOnScroll>
-                    <h2 className="text-5xl md:text-7xl font-black text-white mb-32 uppercase italic tracking-tighter leading-none">Integrity <span className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">Matrix</span></h2>
+                    <h2 className="text-5xl md:text-7xl font-black text-white mb-32 uppercase italic tracking-tighter leading-none">Integrity <EditableText id="about_integrity_title_accent" content="Matrix" as="span" className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]" /></h2>
                 </RevealOnScroll>
 
                 <div className="grid md:grid-cols-3 gap-16">
@@ -236,13 +261,23 @@ export default function About() {
                                 <div className="w-24 h-24 bg-emerald-500/5 rounded-[2.5rem] flex items-center justify-center mb-16 border border-white/5 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-all duration-700 shadow-2xl">
                                     <item.icon className="w-12 h-12 text-emerald-400" />
                                 </div>
-                                <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-[0.3em] italic">{item.title}</h3>
-                                <p className="text-gray-500 text-lg md:text-xl font-light italic leading-relaxed opacity-70 group-hover:opacity-100">"{item.desc}"</p>
+                                <EditableText
+                                    id={`about_integrity_${i}_title`}
+                                    content={item.title}
+                                    as="h3"
+                                    className="text-2xl font-black text-white mb-6 uppercase tracking-[0.3em] italic"
+                                />
+                                <EditableText
+                                    id={`about_integrity_${i}_desc`}
+                                    content={`"${item.desc}"`}
+                                    as="p"
+                                    className="text-gray-500 text-lg md:text-xl font-light italic leading-relaxed opacity-70 group-hover:opacity-100"
+                                />
                             </div>
                         </RevealOnScroll>
                     ))}
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 }
